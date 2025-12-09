@@ -1,3 +1,7 @@
+<img width="1024" height="1536" alt="9 dic 2025, 10_11_28 a m" src="https://github.com/user-attachments/assets/c747dd53-b9e3-4645-af67-c13f3cf6bc8f" />
+
+
+
 # GOLDEN WOLF Bisutería
 
 ## Descripción del Proyecto
@@ -5,7 +9,6 @@
 El proyecto nace en Antioquia, Colombia, con la visión de empoderar a artesanos y emprendedores locales, conectando su talento con un público más amplio a través de una plataforma moderna, segura y fácil de usar.
 
 ---
-<img width="1024" height="1536" alt="9 dic 2025, 10_11_28 a m" src="https://github.com/user-attachments/assets/c747dd53-b9e3-4645-af67-c13f3cf6bc8f" />
 
 ---
 ## Objetivos del Proyecto
