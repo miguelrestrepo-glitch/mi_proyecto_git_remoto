@@ -117,7 +117,9 @@ Este proyecto surge de la combinación entre:
 - El interés en la **innovación digital**.  
 - La visión de **fortalecer el comercio local** y abrir nuevas oportunidades a emprendedores.
 
-  codigos utilizados en github
+  CODIGOS UTILIZADOS EN GITHUB
+
+
 - git init
 - git clone
 - git status
@@ -133,7 +135,9 @@ Este proyecto surge de la combinación entre:
 - git remote
 - git stash
 
-paso a paso 
+PASO A PASO
+
+
 -Primero configuré mi entorno de trabajo en Git, estableciendo mi nombre y mi correo electrónico para que cada cambio quedara registrado con mi identidad. Después inicié un nuevo repositorio en la carpeta de mi proyecto, lo que me permitió empezar a llevar control de versiones.
 
 -Luego conecté mi repositorio local con el remoto en GitHub, de manera que pudiera sincronizar mi trabajo. Revisé el estado de los archivos para ver cuáles habían cambiado y seleccioné los que quería preparar para guardar.
