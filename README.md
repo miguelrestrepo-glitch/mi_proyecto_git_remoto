@@ -115,4 +115,34 @@ Este proyecto está abierto a colaboraciones en:
 Este proyecto surge de la combinación entre:
 - La pasión por el **diseño artesanal**.  
 - El interés en la **innovación digital**.  
-- La visión de **fortalecer el comercio local** y abrir nuevas oportunidades a emprendedores.  
+- La visión de **fortalecer el comercio local** y abrir nuevas oportunidades a emprendedores.
+
+  codigos utilizados en github
+- git init
+- git clone
+- git status
+- git add
+- git commit
+- git push
+- git pull
+- git branch
+- git checkout
+- git merge
+- git log
+- git reset
+- git remote
+- git stash
+
+paso a paso 
+-Primero configuré mi entorno de trabajo en Git, estableciendo mi nombre y mi correo electrónico para que cada cambio quedara registrado con mi identidad. Después inicié un nuevo repositorio en la carpeta de mi proyecto, lo que me permitió empezar a llevar control de versiones.
+
+-Luego conecté mi repositorio local con el remoto en GitHub, de manera que pudiera sincronizar mi trabajo. Revisé el estado de los archivos para ver cuáles habían cambiado y seleccioné los que quería preparar para guardar.
+
+-Cuando tuve listos los cambios, los confirmé con un mensaje que explicaba lo que había hecho y los envié al repositorio remoto para que quedaran disponibles en línea. También traje actualizaciones desde el remoto para mantener mi copia local al día.
+
+-En el proceso, creé ramas para trabajar en nuevas funcionalidades sin afectar la versión principal, cambié entre ellas y en algunos casos las fusioné con la rama principal. Revisé el historial de cambios, comparé diferencias entre versiones y, cuando fue necesario, revertí modificaciones para volver a un estado anterior.
+
+-Finalmente administré la conexión con el repositorio remoto, guardé cambios temporales para retomarlos más tarde y mantuve un flujo ordenado de trabajo que me permitió avanzar en mi proyecto de manera controlada y segura.
+
+
+
