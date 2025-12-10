@@ -1,4 +1,4 @@
-<img width="1024" height="1536" alt="9 dic 2025, 10_11_28 a m" src="https://github.com/user-attachments/assets/c747dd53-b9e3-4645-af67-c13f3cf6bc8f" />
+<img width="900" height="1536" alt="9 dic 2025, 10_11_28 a m" src="https://github.com/user-attachments/assets/c747dd53-b9e3-4645-af67-c13f3cf6bc8f" />
 
 
 
