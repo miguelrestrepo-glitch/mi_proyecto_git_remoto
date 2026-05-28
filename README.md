@@ -149,4 +149,7 @@ PASO A PASO
 -Finalmente administré la conexión con el repositorio remoto, guardé cambios temporales para retomarlos más tarde y mantuve un flujo ordenado de trabajo que me permitió avanzar en mi proyecto de manera controlada y segura.
 
 
+COLABORADORES VIP 
+
+
 
