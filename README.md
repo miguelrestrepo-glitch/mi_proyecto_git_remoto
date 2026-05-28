@@ -151,5 +151,6 @@ PASO A PASO
 
 COLABORADORES VIP 
 
-
+Simonvillegas 
+Dayler giraldo 
 
