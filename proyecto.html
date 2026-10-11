@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="es" data-bs-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BarberPro</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.datatables.net/2.0.3/css/dataTables.bootstrap5.css" rel="stylesheet">
+<style>
+body { background: #1c1c1c; color: #f2f2f2; }
+.hero { min-height: 560px; background: linear-gradient(90deg, #120808 0%, #2a1010 60%, #3a1616 100%); }
+.foto { background: #3b2a2a; border: 1px dashed #7a5555; display: flex; align-items: center; justify-content: center; color: #b99; text-align: center; }
+.hero .foto { height: 420px; border-radius: .5rem; }
+.seccion-oscura { background: #1a0a0a; }
+.tarjeta-servicio .foto { height: 280px; }
+.equipo .foto { height: 240px; }
+.mapa { height: 220px; background: #444; }
+.titulo-vertical { writing-mode: vertical-rl; transform: rotate(180deg); letter-spacing: .2em; font-weight: 700; }
+.btn-pro { background: #2d3a7c; border-color: #2d3a7c; color: #fff; }
+.btn-pro:hover { background: #3a49a0; border-color: #3a49a0; color: #fff; }
+.btn-rojo { background: #d62828; border-color: #d62828; color: #fff; }
+.btn-rojo:hover { background: #b51f1f; border-color: #b51f1f; color: #fff; }
+footer { background: #262626; }
+
+.vista-admin { background: #1c1418; color: #f2f2f2; min-height: 100vh; }
+.lateral { width: 240px; min-height: 100vh; background: #2a1a2c; }
+.lateral .nav-link { color: #e6dce8; border-radius: .4rem; }
+.lateral .nav-link:hover, .lateral .nav-link.active { background: #3a2a4a; color: #fff; }
+.lateral .submenu .nav-link { padding-left: 2rem; font-size: .95rem; }
+.contenido { flex: 1; min-width: 0; }
+.card-panel { background: #2a1f2d; border-radius: .6rem; padding: 1.5rem; }
+.btn-ver { background: #2d3a7c; color: #fff; }
+.btn-ver:hover { background: #3a49a0; color: #fff; }
+.btn-editar { background: #c9a227; color: #1c1418; }
+.btn-editar:hover { background: #e0b82e; color: #1c1418; }
+.btn-eliminar { background: #d62828; color: #fff; }
+.btn-eliminar:hover { background: #b51f1f; color: #fff; }
+.bg-ver { background: #2d3a7c; }
+.bg-editar { background: #c9a227; color: #1c1418; }
+.bg-eliminar { background: #d62828; color: #fff; }
+@media (max-width: 991px) { .lateral { width: 100%; min-height: auto; } .estructura { flex-direction: column; } }
+</style>
+</head>
+<body>
+
+<div id="vistaPublica">
+<nav class="navbar navbar-expand-lg bg-dark border-bottom border-secondary sticky-top">
+  <div class="container">
+    <a class="navbar-brand fw-bold fs-4" href="#inicio">BarberPro</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal" aria-controls="menuPrincipal" aria-expanded="false" aria-label="Abrir menú">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="menuPrincipal">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Inicio</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#inicio">Bienvenida</a></li>
+            <li><a class="dropdown-item" href="#equipo">Nuestro equipo</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Servicios</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#servicios">Corte de Cabello</a></li>
+            <li><a class="dropdown-item" href="#servicios">Cortes de Barba</a></li>
+            <li><a class="dropdown-item" href="#servicios">Cabello + Barba</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Contacto</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#horario">Horario</a></li>
+            <li><a class="dropdown-item" href="#contacto">Escríbenos</a></li>
+          </ul>
+        </li>
+      </ul>
+      <div class="d-flex flex-wrap gap-2">
+        <a href="#" class="btn btn-primary">Formulario apilado</a>
+        <a href="#" class="btn btn-primary">Registrarse</a>
+        <a href="#" class="btn btn-outline-light" data-vista="admin">Iniciar Sesión</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<header id="inicio" class="hero d-flex align-items-center">
+  <div class="container">
+    <div class="row align-items-center g-4">
+      <div class="col-lg-6">
+        <h1 class="display-5 fw-bold">Bienvenidos a BarberPro</h1>
+        <p class="lead">Reserva tu cita, elige tu servicio y administra tu agenda desde un solo lugar.</p>
+        <div class="d-flex gap-2">
+          <a href="#" class="btn btn-pro btn-lg">Agendar cita</a>
+          <a href="#servicios" class="btn btn-outline-light btn-lg">Ver más</a>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <img src="https://tse1.explicit.bing.net/th/id/OIP.aurmZlOl4RtCJvIQ9DcGhwHaE8?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" class="img-fluid rounded mb-2 w-100" style="height:240px; object-fit:cover;" alt="Foto del barbero">
+         
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="servicios" class="seccion-oscura py-5">
+  <div class="container">
+    <h2 class="text-center fw-bold mb-3">Nuestros Servicios</h2>
+    <p class="text-center mx-auto mb-5" style="max-width: 720px;">Registra, consulta y confirma los servicios prestados en la barbería, con atención personalizada para cada cliente.</p>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="card tarjeta-servicio bg-dark border-secondary h-100">
+        <img src="https://tse2.mm.bing.net/th/id/OIP.SphrHQ5tgE4Fzhn5HHMhLwHaEO?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" class="img-fluid rounded mb-2 w-100" style="height:240px; object-fit:cover;" alt="Foto del barbero">
+          <div class="card-body d-flex justify-content-between align-items-center">
+            <span>Corte de Cabello</span>
+            <a href="#" class="btn btn-rojo btn-sm">Agendar</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card tarjeta-servicio bg-dark border-secondary h-100">
+        <img src="https://tse1.explicit.bing.net/th/id/OIP.bMX0MmeFj8E4MI5sfg7g3QHaHZ?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" class="img-fluid rounded mb-2 w-100" style="height:240px; object-fit:cover;" alt="Foto del barbero">
+          <div class="card-body d-flex justify-content-between align-items-center">
+            <span>Cortes de Barba</span>
+            <a href="#" class="btn btn-rojo btn-sm">Agendar</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card tarjeta-servicio bg-dark border-secondary h-100">
+         <img src="https://i.pinimg.com/736x/6d/3e/da/6d3eda4204703f3451a19684da2d2d0e.jpg" class="img-fluid rounded mb-2 w-100" style="height:240px; object-fit:cover;" alt="Foto del barbero">
+          <div class="card-body d-flex justify-content-between align-items-center">
+            <span>Cabello + Barba</span>
+            <a href="#" class="btn btn-rojo btn-sm">Agendar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="text-end mt-3"><a href="#" class="link-light fw-bold">Ver Más...</a></div>
+  </div>
+</section>
+
+<section id="equipo" class="equipo py-5 border-top border-bottom border-secondary">
+  <div class="container">
+    <div class="row g-4 align-items-center">
+      <div class="col-lg-1 d-none d-lg-flex justify-content-center">
+        <span class="titulo-vertical fs-4">NUESTRO EQUIPO</span>
+      </div>
+      <h2 class="d-lg-none fw-bold">Nuestro equipo</h2>
+      <div class="col-md-4 col-lg-3">
+       <img src="https://barberosbarberias.com/assets/img/Galeria/edgar.webp" class="img-fluid rounded mb-2 w-100" style="height:240px; object-fit:cover;" alt="Foto del barbero">
+        <p class="mb-0 small">Miguel Rodríguez<br>Barbero Senior<br>15 años de experiencia<br>Experto en estilo tradicional</p>
+      </div>
+      <div class="col-md-4 col-lg-3">
+     <img src="https://www.carloscondepeluqueros.com/wp-content/uploads/2019/01/cabecera-barbero-profesional.jpg" class="img-fluid rounded mb-2 w-100" style="height:240px; object-fit:cover;" alt="Foto del barbero">
+        <p class="mb-0 small">Carlos Martínez<br>Maestro Barbero<br>10 años de experiencia<br>Especialista en cortes clásicos</p>
+      </div>
+      <div class="col-md-4 col-lg-3">
+        <img src="https://tse3.mm.bing.net/th/id/OIP.0Jyq7w1j7HjeLdQamyP-eAHaHa?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" class="img-fluid rounded mb-2 w-100" style="height:240px; object-fit:cover;" alt="Foto del barbero">
+        <p class="mb-0 small">David López<br>Estilista<br>8 años de experiencia<br>Experto en estilos modernos</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="horario" class="bg-black py-5">
+  <div class="container">
+    <div class="row g-4 align-items-center">
+     <div class="col-md-5">
+  <img src="https://tse4.mm.bing.net/th/id/OIP.kOOCSxdn2sa_9ClUX_VcSQHaE8?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" class="img-fluid rounded w-100" style="height:220px; object-fit:cover;" alt="Mapa de ubicación">
+</div>
+      <div class="col-md-7 text-center">
+        <h3 class="mb-3">Ven cuando quieras,</h3>
+        <p>Consulta el horario comercial</p>
+        <p class="mb-1">Lunes - Sábado<br>8:00 am - 8 pm</p>
+        <p>Domingo<br>11 am - 6 pm</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="contacto" class="py-5">
+  <div class="container">
+    <h3 class="text-center mb-4">CONTACTO</h3>
+    <div class="row g-4">
+      <div class="col-6 col-md-3">
+        <h6 class="fw-bold">Reach us</h6>
+        <p class="small mb-1">+57 300 000 0000</p>
+        <p class="small mb-1">contacto@barberpro.com</p>
+        <p class="small">Dirección de la barbería</p>
+      </div>
+      <div class="col-6 col-md-3">
+        <h6 class="fw-bold">Company</h6>
+        <ul class="list-unstyled small">
+          <li>About</li>
+          <li>Contact</li>
+          <li>Blogs</li>
+        </ul>
+      </div>
+      <div class="col-6 col-md-3">
+        <h6 class="fw-bold">Legal</h6>
+        <ul class="list-unstyled small">
+          <li>Privacy Policy</li>
+          <li>Terms &amp; Services</li>
+          <li>Terms of Use</li>
+          <li>Refund Policy</li>
+        </ul>
+      </div>
+      <div class="col-6 col-md-3">
+        <h6 class="fw-bold">Quick links</h6>
+        <ul class="list-unstyled small">
+          <li>Techlabz Keybox</li>
+          <li>Downloads</li>
+          <li>Forum</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+</div>
+
+<div id="vistaAdmin" class="vista-admin" hidden>
+<div class="d-flex estructura">
+  <aside class="lateral p-3">
+    <h5 class="fw-bold mb-4">PANEL ADMIN</h5>
+    <ul class="nav flex-column gap-1">
+      <li class="nav-item"><a class="nav-link" href="#">Resumen</a></li>
+      <li class="nav-item">
+        <a class="nav-link dropdown-toggle active" data-bs-toggle="collapse" href="#menuGestion" role="button" aria-expanded="true" aria-controls="menuGestion">Gestión</a>
+        <div class="collapse show submenu" id="menuGestion">
+          <ul class="nav flex-column">
+            <li><a class="nav-link active" href="#">Empleados</a></li>
+            <li><a class="nav-link" href="#">Clientes</a></li>
+            <li><a class="nav-link" href="#">Servicios</a></li>
+            <li><a class="nav-link" href="#">Agenda</a></li>
+          </ul>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link dropdown-toggle" data-bs-toggle="collapse" href="#menuSistema" role="button" aria-expanded="false" aria-controls="menuSistema">Sistema</a>
+        <div class="collapse submenu" id="menuSistema">
+          <ul class="nav flex-column">
+            <li><a class="nav-link" href="#">Auditoría</a></li>
+            <li><a class="nav-link" href="#">Backup</a></li>
+            <li><a class="nav-link" href="#">Usuarios</a></li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+    <a href="#" class="btn btn-outline-light btn-sm mt-4" data-vista="publica">Salir</a>
+  </aside>
+
+  <main class="contenido p-4">
+    <div class="d-flex justify-content-end mb-3">
+      <div class="dropdown">
+        <button class="btn btn-outline-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Administrador</button>
+        <ul class="dropdown-menu dropdown-menu-end">
+          <li><a class="dropdown-item" href="#">Mi perfil</a></li>
+          <li><a class="dropdown-item" href="#">Cambiar contraseña</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item" href="#" data-vista="publica">Cerrar sesión</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container-fluid mb-5">
+      <div class="card-panel">
+        <h1 class="mb-4 text-light">Empleados</h1>
+
+        <table id="tablaEmpleados" class="table table-striped table-dark table-hover align-middle w-100">
+          <thead>
+            <tr>
+              <th>Nombres</th>
+              <th>Dirección</th>
+              <th>Correo</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>John</td>
+              <td>Doe</td>
+              <td>john@example.com</td>
+              <td>
+                <button class="btn btn-sm btn-ver" data-bs-toggle="modal" data-bs-target="#modalVer"
+                  data-nombre="John" data-direccion="Doe" data-correo="john@example.com"
+                  data-puesto="Barbero" data-telefono="300 111 2233" data-ingreso="2023-02-10">Ver detalle</button>
+                <button class="btn btn-sm btn-editar" data-bs-toggle="modal" data-bs-target="#modalEditar"
+                  data-nombre="John" data-direccion="Doe" data-correo="john@example.com">Editar</button>
+                <button class="btn btn-sm btn-eliminar" data-bs-toggle="modal" data-bs-target="#modalEliminar"
+                  data-nombre="John">Eliminar</button>
+              </td>
+            </tr>
+            <tr>
+              <td>July</td>
+              <td>Dooley</td>
+              <td>july@example.com</td>
+              <td>
+                <button class="btn btn-sm btn-ver" data-bs-toggle="modal" data-bs-target="#modalVer"
+                  data-nombre="July" data-direccion="Dooley" data-correo="july@example.com"
+                  data-puesto="Estilista" data-telefono="300 444 5566" data-ingreso="2022-08-01">Ver detalle</button>
+                <button class="btn btn-sm btn-editar" data-bs-toggle="modal" data-bs-target="#modalEditar"
+                  data-nombre="July" data-direccion="Dooley" data-correo="july@example.com">Editar</button>
+                <button class="btn btn-sm btn-eliminar" data-bs-toggle="modal" data-bs-target="#modalEliminar"
+                  data-nombre="July">Eliminar</button>
+              </td>
+            </tr>
+            <tr>
+              <td>Mary</td>
+              <td>Moe</td>
+              <td>mary@example.com</td>
+              <td>
+                <button class="btn btn-sm btn-ver" data-bs-toggle="modal" data-bs-target="#modalVer"
+                  data-nombre="Mary" data-direccion="Moe" data-correo="mary@example.com"
+                  data-puesto="Recepción" data-telefono="300 777 8899" data-ingreso="2024-01-15">Ver detalle</button>
+                <button class="btn btn-sm btn-editar" data-bs-toggle="modal" data-bs-target="#modalEditar"
+                  data-nombre="Mary" data-direccion="Moe" data-correo="mary@example.com">Editar</button>
+                <button class="btn btn-sm btn-eliminar" data-bs-toggle="modal" data-bs-target="#modalEliminar"
+                  data-nombre="Mary">Eliminar</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+</div>
+
+<div class="modal fade" id="modalVer" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-ver">
+        <h5 class="modal-title">Detalle del empleado</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="verNombreCompleto" class="form-label">Nombre completo:</label>
+            <input type="text" class="form-control" id="verNombreCompleto" disabled>
+          </div>
+          <div class="mb-3">
+            <label for="verDireccionInput" class="form-label">Dirección:</label>
+            <input type="text" class="form-control" id="verDireccionInput" disabled>
+          </div>
+          <div class="mb-3">
+            <label for="verTelefonoInput" class="form-label">Teléfono:</label>
+            <input type="text" class="form-control" id="verTelefonoInput" disabled>
+          </div>
+          <div class="mb-3">
+            <label for="verAreaInput" class="form-label">Área:</label>
+            <input type="text" class="form-control" id="verAreaInput" disabled>
+          </div>
+          <div class="mb-3">
+            <label for="verIngresoInput" class="form-label">Fecha de ingreso:</label>
+            <input type="text" class="form-control" id="verIngresoInput" disabled>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modalEditar" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-editar">
+        <h5 class="modal-title">Editar empleado</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="editNombre" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="editNombre">
+          </div>
+          <div class="mb-3">
+            <label for="editDireccion" class="form-label">Dirección</label>
+            <input type="text" class="form-control" id="editDireccion">
+          </div>
+          <div class="mb-3">
+            <label for="editCorreo" class="form-label">Correo</label>
+            <input type="email" class="form-control" id="editCorreo">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-editar" data-bs-dismiss="modal">Guardar cambios</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modalEliminar" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-eliminar">
+        <h5 class="modal-title">Eliminar empleado</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <p>¿Seguro que deseas eliminar a <strong id="eliminarNombre"></strong>? Esta acción no se puede deshacer.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-eliminar" data-bs-dismiss="modal">Eliminar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.datatables.net/2.0.3/js/dataTables.js"></script>
+<script src="https://cdn.datatables.net/2.0.3/js/dataTables.bootstrap5.js"></script>
+<script>
+$(document).ready(function () {
+  var tabla = null;
+
+  function mostrar(vista) {
+    if (vista === 'admin') {
+      $('#vistaPublica').prop('hidden', true);
+      $('#vistaAdmin').prop('hidden', false);
+      if (!tabla) {
+        tabla = $('#tablaEmpleados').DataTable({
+          language: {
+            search: "Buscar:",
+            lengthMenu: "Mostrar _MENU_ registros",
+            info: "Mostrando _START_ a _END_ de _TOTAL_ registros",
+            paginate: { first: "«", previous: "‹", next: "›", last: "»" }
+          }
+        });
+      }
+    } else {
+      $('#vistaAdmin').prop('hidden', true);
+      $('#vistaPublica').prop('hidden', false);
+    }
+    window.scrollTo(0, 0);
+  }
+
+  $(document).on('click', '[data-vista]', function (e) {
+    e.preventDefault();
+    mostrar($(this).data('vista'));
+  });
+
+  $('#tablaEmpleados').on('click', '.btn-ver', function () {
+    var d = $(this).data();
+    $('#verNombreCompleto').val(d.nombre);
+    $('#verDireccionInput').val(d.direccion);
+    $('#verTelefonoInput').val(d.telefono);
+    $('#verAreaInput').val(d.puesto);
+    $('#verIngresoInput').val(d.ingreso);
+  });
+
+  $('#tablaEmpleados').on('click', '.btn-editar', function () {
+    var d = $(this).data();
+    $('#editNombre').val(d.nombre);
+    $('#editDireccion').val(d.direccion);
+    $('#editCorreo').val(d.correo);
+  });
+
+  $('#tablaEmpleados').on('click', '.btn-eliminar', function () {
+    $('#eliminarNombre').text($(this).data('nombre'));
+  });
+});
+</script>
+</body>
+</html>
